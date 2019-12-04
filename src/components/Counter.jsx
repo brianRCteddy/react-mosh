@@ -11,17 +11,27 @@ class Counter extends Component {
 	// 	this.incrementHandler = this.incrementHandler.bind(this);
 	// }
 
-	incrementHandler = () => {
+	incrementHandler = (product) => {
+		console.log(product);
 		this.setState({
 			count: this.state.count + 1
 		});
 	};
 
+	// doIncrementHandler = () => {
+	// 	this.incrementHandler({ id: 1 });
+	// };
+
 	render() {
 		return (
 			<div>
 				<span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-				<button onClick={this.incrementHandler} className="btn btn-secondary btn-sm">
+				<button
+					onClick={() => {
+						this.incrementHandler({ id: 1 });
+					}}
+					className="btn btn-secondary btn-sm"
+				>
 					Increment
 				</button>
 				<ul>{this.state.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>

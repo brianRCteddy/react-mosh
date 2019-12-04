@@ -4,6 +4,11 @@ import Navbar from './components/Navbar';
 import Counters from './components/Counters';
 
 class App extends Component {
+	constructor() {
+		super();
+		console.log('App Constructor', this.props);
+	}
+
 	state = {
 		counters: [
 			{ id: 1, value: 0 },
@@ -13,6 +18,10 @@ class App extends Component {
 			{ id: 5, value: 69 }
 		]
 	};
+
+	componentDidMount() {
+		console.log('App Mounted');
+	}
 
 	incrementHandler = (counter) => {
 		const counters = [ ...this.state.counters ];
@@ -37,6 +46,7 @@ class App extends Component {
 		this.setState({ counters });
 	};
 	render() {
+		console.log('App Rendered');
 		return (
 			<React.Fragment>
 				<Navbar totalCounters={this.state.counters.filter((c) => c.value > 0).length} />
